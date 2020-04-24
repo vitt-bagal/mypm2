@@ -1,0 +1,7 @@
+#!/bin/bash
+declare -a Arch=("amd64" "s390x")
+for arch in "${Arch[@]}"
+do
+        echo "Buiding image for $arch"
+        docker build --build-arg ARCH=$arch -t bagalvitthal/mypm2-linux-$arch:latest .
+done

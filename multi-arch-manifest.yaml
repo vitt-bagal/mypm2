@@ -1,0 +1,11 @@
+image: bagalvitthal/mypm2:latest
+manifests:
+  - image: bagalvitthal/mypm2-linux-amd64:latest
+    platform:
+      architecture: amd64
+      os: linux
+  - image: bagalvitthal/mypm2-linux-s390x:latest
+    platform:
+      architecture: s390x
+      os: linux
+
