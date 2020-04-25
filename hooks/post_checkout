@@ -12,15 +12,15 @@ apt-get install -y curl qemu-user-static binfmt-support jq moreutils
 
 
 # NOTE: this url will change regularly because it's unstable
-PACKAGE=http://ftp.de.debian.org/debian/pool/main/q/qemu/qemu-user-static_4.2-2_amd64.deb
+#PACKAGE=http://ftp.de.debian.org/debian/pool/main/q/qemu/qemu-user-static_4.2-2_amd64.deb
 
 mkdir tmp/
 cd tmp/
 
-curl $PACKAGE -o $(basename ${PACKAGE})
-dpkg-deb -X $(basename ${PACKAGE}) .
+#curl $PACKAGE -o $(basename ${PACKAGE})
+#dpkg-deb -X $(basename ${PACKAGE}) .
 #cp usr/bin/qemu-aarch64-static ..
-cp usr/bin/qemu-s390x-static ..
+cp /usr/bin/qemu-s390x-static ..
 cd ..
 rm -rf tmp
 
