@@ -1,10 +1,11 @@
 ARG ARCH="amd64"
 
-FROM ${ARCH}/node:10-alpine
+FROM s390x/node:10-alpine
 
 # Install pm2
 RUN npm install pm2 -g
 
+COPY qemu-s390x-static /usr/bin
 # Expose ports needed to use Keymetrics.io
 EXPOSE 80 443 43554
 
