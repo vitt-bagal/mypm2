@@ -1,46 +1,9 @@
 #!/usr/bin/env bash
 set -eu
 
-echo "🔵 post_checkout"
-
-
 echo " Install qemu + binfmt support"
-echo "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
-# it's an Ubuntu VM and you can install stuff.
-apt-get update
-apt-get install -y curl qemu-user-static binfmt-support jq moreutils
 
+curl -L https://github.com/multiarch/qemu-user-static/releases/download/v4.0.0-2/qemu-s390x-static.tar.gz | tar zxvf - -C /usr/local/bin
+cp /usr/local/bin/qemu-s390x-static qemu-s390x-static
 
-
-# NOTE: this url will change regularly because it's unstable
-#PACKAGE=http://ftp.de.debian.org/debian/pool/main/q/qemu/qemu-user-static_4.2-2_amd64.deb
-
-mkdir tmp/
-cd tmp/
-curl -L https://github.com/multiarch/qemu-user-static/releases/download/v4.0.0-2/qemu-s390x-static.tar.gz | tar zxvf - -C .
-
-cp qemu-s390x-static qemu-s390x-static
-#cp /usr/bin/qemu-s390x-static qemu-s390x-static
-cd ..
-rm -rf tmp
-
-# Sadly docker itself uses Docker EE 17.06 on Dockerhub which does not support
-# manifests.
-echo "✅ Install a fresh docker cli binary"
-echo "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
-
-curl https://download.docker.com/linux/static/stable/x86_64/docker-19.03.8.tgz | \
-  tar xvz docker/docker
-export PATH="$PWD/docker:$PATH"
-docker --version
-echo "✅ Build a usable config.json file"
-echo "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
-# Manifests are still experimental and enabled by a config file flag.
-# Interestingly, there is no config file and the credential parts to push
-# images is available in an environment variable. Let's create a config file to
-# combine the two things:
-#
-mkdir -p ~/.docker
-jq --null-input --argjson auths "$DOCKERCFG" '. + {auths: $auths}' | \
-jq --arg experimental enabled '. + {experimental: $experimental}' | \
-sponge ~/.docker/config.json
+ls -la
