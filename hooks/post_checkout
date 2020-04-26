@@ -19,7 +19,8 @@ mkdir tmp/
 cd tmp/
 curl -L https://github.com/multiarch/qemu-user-static/releases/download/v4.0.0-2/qemu-s390x-static.tar.gz | tar zxvf - -C .
 
-cp qemu-s390x-static ..
+cp qemu-s390x-static qemu-s390x-static
+#cp /usr/bin/qemu-s390x-static qemu-s390x-static
 cd ..
 rm -rf tmp
 
@@ -31,6 +32,7 @@ echo "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯�
 curl https://download.docker.com/linux/static/stable/x86_64/docker-19.03.8.tgz | \
   tar xvz docker/docker
 export PATH="$PWD/docker:$PATH"
+docker --version
 echo "✅ Build a usable config.json file"
 echo "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
 # Manifests are still experimental and enabled by a config file flag.
