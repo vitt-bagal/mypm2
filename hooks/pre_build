@@ -6,5 +6,4 @@ cat /etc/os-release
 docker --version
 #apt-get update
 #apt install -y qemu qemu-user-static qemu-user binfmt-support crossbuild-essential* 
-ln -sf /usr/bin/qemu-s390x-static $PWD/qemu-s390x-static
-docker run --rm --privileged multiarch/qemu-user-static --reset
+docker run --rm --privileged multiarch/qemu-user-static:register --reset
