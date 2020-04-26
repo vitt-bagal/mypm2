@@ -6,4 +6,5 @@ cat /etc/os-release
 docker --version
 #apt-get update
 #apt install -y qemu qemu-user-static qemu-user binfmt-support crossbuild-essential* 
-docker run --rm --privileged multiarch/qemu-user-static:register --reset
+docker run --privileged linuxkit/binfmt:v0.7
+#docker run --rm --privileged multiarch/qemu-user-static:register --reset
