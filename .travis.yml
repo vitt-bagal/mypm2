@@ -8,5 +8,5 @@ script:
 - docker run --rm --privileged multiarch/qemu-user-static:register
 - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 # build and push images 
-- bash build_n_push.sh
+- ./build_n_push.sh
 - docker images
