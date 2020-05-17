@@ -6,7 +6,7 @@ services:
   - docker
 language: bash
 script:
-- docker run --rm --privileged multiarch/qemu-user-static:register
+- docker run --privileged linuxkit/binfmt:v0.7
 - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 # build and push images 
 - ./build_n_push.sh
