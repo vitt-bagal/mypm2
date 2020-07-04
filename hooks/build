@@ -2,5 +2,5 @@
 export DOCKER_CLI_EXPERIMENTAL=enabled
 docker buildx create --use --name multiarchimage-buildertest
 
-docker buildx build --push -t bagalvitthal/mypm2:latest --platform linux/amd64,linux/arm64 .
+docker buildx build --push -t bagalvitthal/mypm2:latest --platform linux/amd64,linux/s390x .
 
