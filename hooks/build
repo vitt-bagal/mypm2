@@ -5,5 +5,5 @@ docker buildx create --name multiarchimage-buildertest
 docker buildx use multiarchimage-buildertest
 docker buildx inspect --bootstrap
 sudo apt install -y qemu
-docker buildx build --load -t bagalvitthal/mypm2:latest --platform linux/s390x .
-
+#docker buildx build --load -t bagalvitthal/mypm2:latest --platform linux/s390x .
+docker build -t bagalvitthal/mypm2:latest .
