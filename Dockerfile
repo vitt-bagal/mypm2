@@ -1,4 +1,5 @@
-FROM --platform=$TARGETPLATFORM node:10-alpine
+#FROM --platform=$TARGETPLATFORM node:10-alpine
+FROM node:10-alpine
 LABEL maintainer="Keymetrics <contact@keymetrics.io>"
 # Install pm2
 RUN npm install pm2 -g
