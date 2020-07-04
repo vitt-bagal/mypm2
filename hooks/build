@@ -4,6 +4,6 @@ export DOCKER_CLI_EXPERIMENTAL=enabled
 docker buildx create --name multiarchimage-buildertest
 docker buildx use multiarchimage-buildertest
 docker buildx inspect --bootstrap
-
-docker buildx build --load -t bagalvitthal/mypm2:latest --platform linux/amd64 .
+sudo apt install -y qemu
+docker buildx build --load -t bagalvitthal/mypm2:latest --platform linux/s390x .
 
